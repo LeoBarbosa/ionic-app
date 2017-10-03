@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { DecimalPipe } from '@angular/common'
 
 @Component({
   selector: 'page-home',
@@ -12,7 +13,7 @@ export class HomePage {
   debitTotal: number;
   credits: any[];
   debits: any[];
-  
+
   constructor(public navCtrl: NavController, private storage: Storage) {
     let date = new Date();
     let month = date.getMonth() + 1;

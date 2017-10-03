@@ -19,7 +19,7 @@
       <ion-card-header color="secondary">
         <ion-item color="secondary">
           Saldo
-          <ion-badge color="light" item-end> R$ {{creditTotal - debitTotal}}</ion-badge>
+          <ion-badge color="light" item-end> R$ {{creditTotal - debitTotal | number:'1.2-2'}}</ion-badge>
         </ion-item>
       </ion-card-header>
     </ion-card>
@@ -29,7 +29,7 @@
       <ion-card-header color="primary">
         <ion-item color="primary">
           A receber
-          <ion-badge color="light" item-end>R$ {{creditTotal}}</ion-badge>
+          <ion-badge color="light" item-end>R$ {{creditTotal | number:'1.2-2'}}</ion-badge>
         </ion-item>
       </ion-card-header>
     </ion-card>
@@ -39,7 +39,7 @@
       <ion-card-header color="danger">
         <ion-item color="danger">
           A pagar
-          <ion-badge color="light" item-end>R$ {{debitTotal}}</ion-badge>
+          <ion-badge color="light" item-end>R$ {{debitTotal | number:'1.2-2'}}</ion-badge>
         </ion-item>
       </ion-card-header>
     </ion-card>

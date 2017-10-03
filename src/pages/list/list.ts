@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
+import { DecimalPipe } from '@angular/common'
 
 
 @Component({
@@ -31,7 +32,8 @@ export class ListPage {
       this.credits = data;
       if(data != null) {
         data.map((each) => {
-          this.creditTotal += parseFloat(each.value)
+          let value = this.formatValue(each.value)
+          this.creditTotal += parseFloat(value)
         })  
       }
     })
@@ -39,7 +41,8 @@ export class ListPage {
       this.debits = data;           
       if(data != null) {
         data.map((each) => {
-          this.debitTotal += parseFloat(each.value)
+          let value = this.formatValue(each.value)
+          this.debitTotal += parseFloat(value)
         })  
       }
     })
@@ -102,7 +105,8 @@ export class ListPage {
                     this.creditTotal = 0;
                     
                     data.map((each) => {
-                      this.creditTotal += parseFloat(each.value)
+                      let value = this.formatValue(each.value)
+                      this.creditTotal += parseFloat(value)
                     })
                     
                   } else {
@@ -113,7 +117,8 @@ export class ListPage {
                     this.creditTotal = 0;
                     
                     array.map((each) => {
-                      this.creditTotal += parseFloat(each.value)
+                      let value = this.formatValue(each.value)
+                      this.creditTotal += parseFloat(value)
                     })
                   }
                   
@@ -156,7 +161,8 @@ export class ListPage {
                     this.debits = data;
                     this.debitTotal = 0;
                     data.map((each) => {
-                      this.debitTotal += parseFloat(each.value)
+                      let value = this.formatValue(each.value)
+                      this.debitTotal += parseFloat(value)
                     })
                   } else {
                     let array = [];
@@ -165,7 +171,8 @@ export class ListPage {
                     this.debits = array;
                     this.debitTotal = 0;
                     array.map((each) => {
-                      this.debitTotal += parseFloat(each.value)
+                      let value = this.formatValue(each.value)
+                      this.debitTotal += parseFloat(value)
                     })
                   }
                   
@@ -186,7 +193,8 @@ export class ListPage {
       this.credits = data;
       if(data != null) {
         data.map((each) => {
-          this.creditTotal += parseFloat(each.value)
+          let value = this.formatValue(each.value)
+          this.creditTotal += parseFloat(value)
         })
       }
     })
@@ -195,7 +203,8 @@ export class ListPage {
       this.debits = data;
       if(data != null) {
         data.map((each) => {
-          this.debitTotal += parseFloat(each.value)
+          let value = this.formatValue(each.value)
+          this.debitTotal += parseFloat(value)
         })  
       }
     })
@@ -241,7 +250,8 @@ export class ListPage {
                         this.storage.set('debits_' + this.date, this.debits);  
                         this.debitTotal = 0;
                         this.debits.map((each) => {
-                          this.debitTotal += parseFloat(each.value)
+                          let value = this.formatValue(each.value)
+                          this.debitTotal += parseFloat(value)
                         })
                       
                     }
@@ -289,7 +299,8 @@ export class ListPage {
                        this.storage.set('credits_' + this.date, this.credits);  
                        this.creditTotal = 0; 
                        this.credits.map((each) => {
-                          this.creditTotal += parseFloat(each.value)
+                         let value = this.formatValue(each.value)
+                          this.creditTotal += parseFloat(value)
                         })
                     
                     }
@@ -305,6 +316,13 @@ export class ListPage {
     });
     actionSheet.present();
     
+  }
+
+  formatValue(value) {
+    value = value.replace(',','-');
+    value = value.replace('.','');
+    value = value.replace('-','.');
+    return value;
   }
   
 }

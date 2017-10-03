@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/ControleFinanceiro.app</string>
+		<key>CFBundleIdentifier</key>
+		<string>io.ionic.bills.control</string>
+		<key>CFBundleShortVersionString</key>
+		<string>0.0.1</string>
+		<key>CFBundleVersion</key>
+		<string>0.0.1</string>
+		<key>SigningIdentity</key>
+		<string>iPhone Developer: leonardo.b.oliveira@outlook.com.br (3SZPBTC9R7)</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2017-10-03T13:56:35Z</date>
+	<key>Name</key>
+	<string>ControleFinanceiro</string>
+	<key>SchemeName</key>
+	<string>ControleFinanceiro</string>
+</dict>
+</plist>

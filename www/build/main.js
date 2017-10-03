@@ -85,7 +85,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/leonardo/ionic-app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <ion-item>\n      <ion-label>Data:</ion-label>\n      <ion-datetime disabled displayFormat="MMM YYYY" pickerFormat="MMM YYYY" [(ngModel)]="date"></ion-datetime>\n    </ion-item>\n  </ion-card>\n  \n    <ion-card color="secondary">\n      <ion-card-header color="secondary">\n        <ion-item color="secondary">\n          Saldo\n          <ion-badge color="light" item-end> R$ {{creditTotal - debitTotal}}</ion-badge>\n        </ion-item>\n      </ion-card-header>\n    </ion-card>\n  \n    <ion-card color="primary">\n      <!--(click)="showDetails()"-->\n      <ion-card-header color="primary">\n        <ion-item color="primary">\n          A receber\n          <ion-badge color="light" item-end>R$ {{creditTotal}}</ion-badge>\n        </ion-item>\n      </ion-card-header>\n    </ion-card>\n    \n    <ion-card color="danger">\n      <!--(click)="showDetails()"-->\n      <ion-card-header color="danger">\n        <ion-item color="danger">\n          A pagar\n          <ion-badge color="light" item-end>R$ {{debitTotal}}</ion-badge>\n        </ion-item>\n      </ion-card-header>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/leonardo/ionic-app/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/Users/leonardo/ionic-app/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <ion-item>\n      <ion-label>Data:</ion-label>\n      <ion-datetime disabled displayFormat="MMM YYYY" pickerFormat="MMM YYYY" [(ngModel)]="date"></ion-datetime>\n    </ion-item>\n  </ion-card>\n  \n    <ion-card color="secondary">\n      <ion-card-header color="secondary">\n        <ion-item color="secondary">\n          Saldo\n          <ion-badge color="light" item-end> R$ {{creditTotal - debitTotal | number:\'1.2-2\'}}</ion-badge>\n        </ion-item>\n      </ion-card-header>\n    </ion-card>\n  \n    <ion-card color="primary">\n      <!--(click)="showDetails()"-->\n      <ion-card-header color="primary">\n        <ion-item color="primary">\n          A receber\n          <ion-badge color="light" item-end>R$ {{creditTotal | number:\'1.2-2\'}}</ion-badge>\n        </ion-item>\n      </ion-card-header>\n    </ion-card>\n    \n    <ion-card color="danger">\n      <!--(click)="showDetails()"-->\n      <ion-card-header color="danger">\n        <ion-item color="danger">\n          A pagar\n          <ion-badge color="light" item-end>R$ {{debitTotal | number:\'1.2-2\'}}</ion-badge>\n        </ion-item>\n      </ion-card-header>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/leonardo/ionic-app/src/pages/home/home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
 ], HomePage);
@@ -134,7 +134,8 @@ var ListPage = (function () {
             _this.credits = data;
             if (data != null) {
                 data.map(function (each) {
-                    _this.creditTotal += parseFloat(each.value);
+                    var value = _this.formatValue(each.value);
+                    _this.creditTotal += parseFloat(value);
                 });
             }
         });
@@ -142,7 +143,8 @@ var ListPage = (function () {
             _this.debits = data;
             if (data != null) {
                 data.map(function (each) {
-                    _this.debitTotal += parseFloat(each.value);
+                    var value = _this.formatValue(each.value);
+                    _this.debitTotal += parseFloat(value);
                 });
             }
         });
@@ -202,7 +204,8 @@ var ListPage = (function () {
                                 _this.credits = data;
                                 _this.creditTotal = 0;
                                 data.map(function (each) {
-                                    _this.creditTotal += parseFloat(each.value);
+                                    var value = _this.formatValue(each.value);
+                                    _this.creditTotal += parseFloat(value);
                                 });
                             }
                             else {
@@ -212,7 +215,8 @@ var ListPage = (function () {
                                 _this.credits = array;
                                 _this.creditTotal = 0;
                                 array.map(function (each) {
-                                    _this.creditTotal += parseFloat(each.value);
+                                    var value = _this.formatValue(each.value);
+                                    _this.creditTotal += parseFloat(value);
                                 });
                             }
                         });
@@ -253,7 +257,8 @@ var ListPage = (function () {
                                 _this.debits = data;
                                 _this.debitTotal = 0;
                                 data.map(function (each) {
-                                    _this.debitTotal += parseFloat(each.value);
+                                    var value = _this.formatValue(each.value);
+                                    _this.debitTotal += parseFloat(value);
                                 });
                             }
                             else {
@@ -263,7 +268,8 @@ var ListPage = (function () {
                                 _this.debits = array;
                                 _this.debitTotal = 0;
                                 array.map(function (each) {
-                                    _this.debitTotal += parseFloat(each.value);
+                                    var value = _this.formatValue(each.value);
+                                    _this.debitTotal += parseFloat(value);
                                 });
                             }
                         });
@@ -281,7 +287,8 @@ var ListPage = (function () {
             _this.credits = data;
             if (data != null) {
                 data.map(function (each) {
-                    _this.creditTotal += parseFloat(each.value);
+                    var value = _this.formatValue(each.value);
+                    _this.creditTotal += parseFloat(value);
                 });
             }
         });
@@ -289,7 +296,8 @@ var ListPage = (function () {
             _this.debits = data;
             if (data != null) {
                 data.map(function (each) {
-                    _this.debitTotal += parseFloat(each.value);
+                    var value = _this.formatValue(each.value);
+                    _this.debitTotal += parseFloat(value);
                 });
             }
         });
@@ -328,7 +336,8 @@ var ListPage = (function () {
                                         _this.storage.set('debits_' + _this.date, _this.debits);
                                         _this.debitTotal = 0;
                                         _this.debits.map(function (each) {
-                                            _this.debitTotal += parseFloat(each.value);
+                                            var value = _this.formatValue(each.value);
+                                            _this.debitTotal += parseFloat(value);
                                         });
                                     }
                                 }
@@ -368,7 +377,8 @@ var ListPage = (function () {
                                         _this.storage.set('credits_' + _this.date, _this.credits);
                                         _this.creditTotal = 0;
                                         _this.credits.map(function (each) {
-                                            _this.creditTotal += parseFloat(each.value);
+                                            var value = _this.formatValue(each.value);
+                                            _this.creditTotal += parseFloat(value);
                                         });
                                     }
                                 }
@@ -381,11 +391,17 @@ var ListPage = (function () {
         });
         actionSheet.present();
     };
+    ListPage.prototype.formatValue = function (value) {
+        value = value.replace(',', '-');
+        value = value.replace('.', '');
+        value = value.replace('-', '.');
+        return value;
+    };
     return ListPage;
 }());
 ListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-list',template:/*ion-inline-start:"/Users/leonardo/ionic-app/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Contas</ion-title>\n     <ion-buttons (click)="update()" end>\n      <button ion-button icon-only>\n        <ion-icon ios="ios-refresh" md="md-refresh"  item-end></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <ion-item>\n      <ion-label>Data:</ion-label>\n      <ion-datetime displayFormat="MMM YYYY" pickerFormat="MMM YYYY" [(ngModel)]="date"></ion-datetime>\n    </ion-item>\n  </ion-card>\n  \n  <ion-card>\n    <ion-card-header>\n      <ion-item>\n        Saldo\n        <ion-badge item-end color="secondary">R$ {{creditTotal - debitTotal}}</ion-badge>\n      </ion-item>\n    </ion-card-header>\n  </ion-card>\n\n  <ion-card>\n    <!--(click)="showDetails()"-->\n    <ion-card-header>\n      <ion-item>\n        A receber\n        <ion-badge item-end color="primary">R$ {{creditTotal}}</ion-badge>\n      </ion-item>\n    </ion-card-header>\n    <ion-list *ngFor="let credit of credits; let i = index" [attr.data-index]="i">\n      <ion-item (click)="optionCredits(i)">{{credit.title}} <ion-badge item-end color="light">R$ {{credit.value}}</ion-badge></ion-item>\n    </ion-list>\n  </ion-card>\n  \n  <ion-card>\n    <!--(click)="showDetails()"-->\n    <ion-card-header>\n      <ion-item>\n        A pagar\n        <ion-badge item-end color="danger">R$ {{debitTotal}}</ion-badge>\n      </ion-item>\n    </ion-card-header>\n    <ion-list *ngFor="let debit of debits; let i = index" [attr.data-index]="i">\n      <ion-item (click)="optionDebits(i)">{{debit.title}} <ion-badge item-end color="light">R$ {{debit.value}}</ion-badge></ion-item>\n    </ion-list>\n  </ion-card>\n  \n  <p padding>\n    <button ion-button block (click)="choiceOption()">Nova Entrada</button>\n  </p>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/Users/leonardo/ionic-app/src/pages/list/list.html"*/
+        selector: 'page-list',template:/*ion-inline-start:"/Users/leonardo/ionic-app/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Contas</ion-title>\n     <ion-buttons (click)="update()" end>\n      <button ion-button icon-only>\n        <ion-icon ios="ios-refresh" md="md-refresh"  item-end></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-card>\n    <ion-item>\n      <ion-label>Data:</ion-label>\n      <ion-datetime displayFormat="MMM YYYY" pickerFormat="MMM YYYY" [(ngModel)]="date"></ion-datetime>\n    </ion-item>\n  </ion-card>\n  \n  <ion-card>\n    <ion-card-header>\n      <ion-item>\n        Saldo\n        <ion-badge item-end color="secondary">R$ {{creditTotal - debitTotal | number:\'1.2-2\'}}</ion-badge>\n      </ion-item>\n    </ion-card-header>\n  </ion-card>\n\n  <ion-card>\n    <!--(click)="showDetails()"-->\n    <ion-card-header>\n      <ion-item>\n        A receber\n        <ion-badge item-end color="primary">R$ {{creditTotal | number:\'1.2-2\'}}</ion-badge>\n      </ion-item>\n    </ion-card-header>\n    <ion-list *ngFor="let credit of credits; let i = index" [attr.data-index]="i">\n      <ion-item (click)="optionCredits(i)">{{credit.title}} <ion-badge item-end color="light">R$ {{credit.value}}</ion-badge></ion-item>\n    </ion-list>\n  </ion-card>\n  \n  <ion-card>\n    <!--(click)="showDetails()"-->\n    <ion-card-header>\n      <ion-item>\n        A pagar\n        <ion-badge item-end color="danger">R$ {{debitTotal | number:\'1.2-2\'}}</ion-badge>\n      </ion-item>\n    </ion-card-header>\n    <ion-list *ngFor="let debit of debits; let i = index" [attr.data-index]="i">\n      <ion-item (click)="optionDebits(i)">{{debit.title}} <ion-badge item-end color="light">R$ {{debit.value}}</ion-badge></ion-item>\n    </ion-list>\n  </ion-card>\n  \n  <p padding>\n    <button ion-button block (click)="choiceOption()">Nova Entrada</button>\n  </p>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/Users/leonardo/ionic-app/src/pages/list/list.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
 ], ListPage);

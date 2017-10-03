@@ -24,7 +24,7 @@
     <ion-card-header>
       <ion-item>
         Saldo
-        <ion-badge item-end color="secondary">R$ {{creditTotal - debitTotal}}</ion-badge>
+        <ion-badge item-end color="secondary">R$ {{creditTotal - debitTotal | number:'1.2-2'}}</ion-badge>
       </ion-item>
     </ion-card-header>
   </ion-card>
@@ -34,7 +34,7 @@
     <ion-card-header>
       <ion-item>
         A receber
-        <ion-badge item-end color="primary">R$ {{creditTotal}}</ion-badge>
+        <ion-badge item-end color="primary">R$ {{creditTotal | number:'1.2-2'}}</ion-badge>
       </ion-item>
     </ion-card-header>
     <ion-list *ngFor="let credit of credits; let i = index" [attr.data-index]="i">
@@ -47,7 +47,7 @@
     <ion-card-header>
       <ion-item>
         A pagar
-        <ion-badge item-end color="danger">R$ {{debitTotal}}</ion-badge>
+        <ion-badge item-end color="danger">R$ {{debitTotal | number:'1.2-2'}}</ion-badge>
       </ion-item>
     </ion-card-header>
     <ion-list *ngFor="let debit of debits; let i = index" [attr.data-index]="i">
