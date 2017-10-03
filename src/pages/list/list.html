@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Contas</ion-title>
+     <ion-buttons (click)="update()" end>
+      <button ion-button icon-only>
+        <ion-icon ios="ios-refresh" md="md-refresh"  item-end></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label>Data:</ion-label>
+      <ion-datetime displayFormat="MMM YYYY" pickerFormat="MMM YYYY" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        Saldo
+        <ion-badge item-end color="secondary">R$ {{creditTotal - debitTotal}}</ion-badge>
+      </ion-item>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <!--(click)="showDetails()"-->
+    <ion-card-header>
+      <ion-item>
+        A receber
+        <ion-badge item-end color="primary">R$ {{creditTotal}}</ion-badge>
+      </ion-item>
+    </ion-card-header>
+    <ion-list *ngFor="let credit of credits; let i = index" [attr.data-index]="i">
+      <ion-item (click)="optionCredits(i)">{{credit.title}} <ion-badge item-end color="light">R$ {{credit.value}}</ion-badge></ion-item>
+    </ion-list>
+  </ion-card>
+  
+  <ion-card>
+    <!--(click)="showDetails()"-->
+    <ion-card-header>
+      <ion-item>
+        A pagar
+        <ion-badge item-end color="danger">R$ {{debitTotal}}</ion-badge>
+      </ion-item>
+    </ion-card-header>
+    <ion-list *ngFor="let debit of debits; let i = index" [attr.data-index]="i">
+      <ion-item (click)="optionDebits(i)">{{debit.title}} <ion-badge item-end color="light">R$ {{debit.value}}</ion-badge></ion-item>
+    </ion-list>
+  </ion-card>
+  
+  <p padding>
+    <button ion-button block (click)="choiceOption()">Nova Entrada</button>
+  </p>
+  
+  
+</ion-content>

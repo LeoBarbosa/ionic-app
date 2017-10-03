@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-label>Data:</ion-label>
+      <ion-datetime disabled displayFormat="MMM YYYY" pickerFormat="MMM YYYY" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+  </ion-card>
+  
+    <ion-card color="secondary">
+      <ion-card-header color="secondary">
+        <ion-item color="secondary">
+          Saldo
+          <ion-badge color="light" item-end> R$ {{creditTotal - debitTotal}}</ion-badge>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+  
+    <ion-card color="primary">
+      <!--(click)="showDetails()"-->
+      <ion-card-header color="primary">
+        <ion-item color="primary">
+          A receber
+          <ion-badge color="light" item-end>R$ {{creditTotal}}</ion-badge>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+    
+    <ion-card color="danger">
+      <!--(click)="showDetails()"-->
+      <ion-card-header color="danger">
+        <ion-item color="danger">
+          A pagar
+          <ion-badge color="light" item-end>R$ {{debitTotal}}</ion-badge>
+        </ion-item>
+      </ion-card-header>
+    </ion-card>
+</ion-content>
